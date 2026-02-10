@@ -697,7 +697,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.deceleration = 0.3;
         this.airAcceleration = 0.3;
         this.jumpVelocity = -350;
-        this.currentSpeed = 0;
         
         // Estados
         this.isRolling = false;
@@ -765,12 +764,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     
     roll() {
         this.isRolling = true;
-        // Aumentar velocidade levemente ao rolar
-        if (this.body.velocity.x > 0) {
-            this.setVelocityX(this.body.velocity.x * 1.1);
-        } else {
-            this.setVelocityX(this.body.velocity.x * 1.1);
-        }
+        // Aumentar velocidade levemente ao rolar (mantém direção)
+        this.setVelocityX(this.body.velocity.x * 1.1);
     }
     
     takeDamage() {
